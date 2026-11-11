@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Mel Christian D. Serenas, BSIT Student.">
+  <title>Mel Christian D. Serenas | Portfolio</title>
+  <style>
+    :root {
+      --navy: #102747;
+      --navy-2: #193b64;
+      --blue: #4776a8;
+      --ink: #172437;
+      --muted: #64748b;
+      --paper: #ffffff;
+      --soft: #f3f6fa;
+      --line: #dce4ee;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { color: var(--navy); font-weight: 800; letter-spacing: .04em; text-decoration: none; }
+    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: #43536a; font-size: .92rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue); }
+    .hero { background: linear-gradient(135deg, #f7f9fc 0%, #edf3fa 100%); padding: 92px 0 82px; }
+    .hero-grid { display: grid; grid-template-columns: 1.5fr .8fr; align-items: center; gap: 50px; }
+    .eyebrow { color: var(--blue); font-size: .78rem; letter-spacing: .16em; font-weight: 800; text-transform: uppercase; }
+    h1 { color: var(--navy); font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.05; letter-spacing: -.045em; margin: 14px 0; }
+    .role { font-size: 1.18rem; color: var(--navy-2); font-weight: 700; margin: 0 0 18px; }
+    .intro { color: #526176; max-width: 590px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; padding: 12px 19px; border-radius: 8px; font-weight: 700; text-decoration: none; border: 1px solid var(--navy); }
+    .btn-primary { background: var(--navy); color: white; }
+    .btn-secondary { color: var(--navy); background: white; }
+    .monogram {
+      width: min(270px, 75vw); aspect-ratio: 1; margin: auto;
+      border-radius: 28px; background: var(--navy); color: white;
+      display: grid; place-items: center; position: relative; overflow: hidden;
+      box-shadow: 0 22px 55px rgba(16,39,71,.18);
+    }
+    .monogram::before, .monogram::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; width: 230px; height: 230px; }
+    .monogram::before { transform: translate(95px,-95px); }
+    .monogram::after { transform: translate(-95px,95px); }
+    .monogram span { font-size: 4.3rem; font-weight: 800; letter-spacing: -.08em; z-index: 1; }
+    section { padding: 76px 0; }
+    .section-soft { background: var(--soft); }
+    .section-heading { margin-bottom: 28px; }
+    .section-heading h2 { color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2; margin: 7px 0; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .about-card, .project-card, .contact-card {
+      background: white; border: 1px solid var(--line); border-radius: 14px; padding: 26px;
+      box-shadow: 0 8px 24px rgba(16,39,71,.04);
+    }
+    .about-card p { margin: 0; color: #526176; }
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill {
+      padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: white;
+    }
+    .skill strong { display: block; color: var(--navy); font-size: 1.05rem; }
+    .skill span { color: var(--muted); font-size: .9rem; }
+    .project-card { max-width: 720px; }
+    .project-label { color: var(--blue); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+    .project-card h3 { color: var(--navy); margin: 8px 0; font-size: 1.35rem; }
+    .project-card p { color: #526176; margin: 0 0 14px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { background: #edf3fa; color: var(--navy-2); padding: 5px 10px; border-radius: 30px; font-size: .8rem; font-weight: 700; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .contact-item small { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; font-size: .7rem; font-weight: 800; }
+    .contact-item a, .contact-item strong { display: inline-block; margin-top: 5px; color: var(--navy); font-weight: 700; overflow-wrap: anywhere; }
+    footer { background: var(--navy); color: #dce6f2; padding: 24px 0; text-align: center; font-size: .88rem; }
+    footer p { margin: 0; }
+    @media (max-width: 700px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .82rem; }
+      .hero { padding: 65px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .monogram { width: 190px; }
+      .monogram span { font-size: 3.3rem; }
+      section { padding: 58px 0; }
+      .skills { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 430px) {
+      nav { align-items: flex-start; flex-direction: column; padding: 13px 0; gap: 8px; }
+      .nav-links { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">MCS.</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Personal Portfolio · 3E</div>
+          <h1>Mel Christian<br>D. Serenas</h1>
+          <p class="role">BSIT Student</p>
+          <p class="intro">A technology learner building knowledge in web development and exploring how digital ideas can become useful solutions.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <a class="btn btn-secondary" href="mailto:serenasmel09@gmail.com">Contact Me</a>
+          </div>
+        </div>
+        <div class="monogram" aria-label="MCS initials"><span>MCS</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2>About Me</h2>
+          <p>Learning, creating, and growing through technology.</p>
+        </div>
+        <div class="about-card">
+          <p>I am Mel Christian D. Serenas, a BSIT student from section 3E. I am developing my skills in HTML, CSS, and JavaScript while learning more about building websites and digital experiences. My personal motto is <strong>“Go with the Flow.”</strong> It reminds me to stay adaptable, keep learning, and take each challenge one step at a time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-soft" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I'm learning</div>
+          <h2>Technical Skills</h2>
+          <p>My current web development foundations.</p>
+        </div>
+        <div class="skills">
+          <div class="skill"><strong>HTML</strong><span>Building webpage structure</span></div>
+          <div class="skill"><strong>CSS</strong><span>Styling and page layouts</span></div>
+          <div class="skill"><strong>JavaScript</strong><span>Adding interactive behavior</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Learning in action</div>
+          <h2>Projects</h2>
+          <p>A selected academic project.</p>
+        </div>
+        <article class="project-card">
+          <div class="project-label">Academic Web Project</div>
+          <h3>Environet: A Zero-Waste Community Website</h3>
+          <p>An informational and interactive website concept focused on encouraging proper waste segregation, recycling awareness, and community participation.</p>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Environment</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-soft" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Contact</h2>
+          <p>Feel free to reach out through my email.</p>
+        </div>
+        <div class="contact-card contact-grid">
+          <div class="contact-item"><small>Email</small><a href="mailto:serenasmel09@gmail.com">serenasmel09@gmail.com</a></div>
+          <div class="contact-item"><small>Program / Section</small><strong>BSIT · 3E</strong></div>
+          <div class="contact-item"><small>Personal Motto</small><strong>Go with the Flow</strong></div>
+          <div class="contact-item"><small>Portfolio Owner</small><strong>Mel Christian D. Serenas</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><p>© <span id="year"></span> Mel Christian D. Serenas · Personal Portfolio</p></div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
